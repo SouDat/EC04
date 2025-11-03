@@ -1,15 +1,11 @@
 package com.example.order_system.controller;
 
-import com.example.order_system.dto.Customer;
-import com.example.order_system.dto.Orders;
+import com.example.order_system.model.Customer;
+import com.example.order_system.model.Orders;
 import com.example.order_system.repository.CustomerRepository;
 import com.example.order_system.repository.OrderRepository;
-import org.aspectj.weaver.ast.Or;
-import org.hibernate.boot.model.relational.ColumnOrderingStrategyStandard;
-import org.hibernate.query.Order;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 @RestController
