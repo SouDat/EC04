@@ -1,53 +1,15 @@
-<h1 align="center">🧾 Order Management System</h1>
-<h3 align="center">A Spring Boot RESTful application with MySQL integration</h3>
+<h1 align="center">Hi 👋, I'm Soumili Datta</h1>
+<h3 align="center">A passionate backend developer from India</h3>
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Spring%20Boot-3.4.12-green?style=for-the-badge&logo=springboot">
-  <img src="https://img.shields.io/badge/MySQL-8.0-blue?style=for-the-badge&logo=mysql">
-  <img src="https://img.shields.io/badge/Java-21-orange?style=for-the-badge&logo=openjdk">
+- 🔭 I’m currently working in **BlackRock Services India Pvt. Ltd. as an Analyst**
+
+- 📫 How to reach me **ckndatta1302@gmail.com**
+
+- 📄 Know about my experiences [https://drive.google.com/file/d/1xoG9HDw2244nuanSamVE5RgtxqkE3Rn5/view?usp=sharing](https://drive.google.com/file/d/1xoG9HDw2244nuanSamVE5RgtxqkE3Rn5/view?usp=sharing)
+
+<h3 align="left">Connect with me:</h3>
+<p align="left">
 </p>
 
----
-
-## 📘 Project Overview
-
-This is a **Spring Boot Order Management System**, designed to demonstrate key backend engineering concepts such as:
-- RESTful API design
-- Database integration using Spring Data JPA
-- Entity relationships (One-to-Many, Many-to-One)
-- Exception handling and validation
-- Basic authentication for secure endpoints
-
-It allows users to perform CRUD operations on **Customers** and **Orders** through REST APIs tested via Postman.
-
----
-
-## 🏗️ Tech Stack
-
-| Layer | Technology                   |
-|-------|------------------------------|
-| Backend | Spring Boot (Java 21)         |
-| Database | MySQL                        |
-| ORM | Hibernate / JPA              |
-| Tools | Postman, Maven, Git          |
-| Security | Spring Security (Basic Auth) |
-
----
-
-## ⚙️ Features
-
-✅ Add, fetch, update, and delete **Customers**  
-✅ Manage **Orders** linked to each Customer  
-✅ Validate inputs using `@Valid`, `@NotBlank`, etc.  
-✅ Handle exceptions gracefully with `@ControllerAdvice`  
-✅ Secure endpoints using Basic Authentication
-
----
-
-## 🚀 Getting Started
-
-### 1️⃣ Clone the repository
-
-```bash
-git clone https://github.com/SouDat/EC04.git
-cd EC04
+<h3 align="left">Languages and Tools:</h3>
+<p align="left"> <a href="https://azure.microsoft.com/en-in/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/microsoft_azure/microsoft_azure-icon.svg" alt="azure" width="40" height="40"/> </a> <a href="https://www.docker.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original-wordmark.svg" alt="docker" width="40" height="40"/> </a> <a href="https://expressjs.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original-wordmark.svg" alt="express" width="40" height="40"/> </a> <a href="https://www.figma.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" alt="figma" width="40" height="40"/> </a> <a href="https://git-scm.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="40" height="40"/> </a> <a href="https://www.w3.org/html/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" width="40" height="40"/> </a> <a href="https://www.java.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="java" width="40" height="40"/> </a> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/> </a> <a href="https://kubernetes.io" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/kubernetes/kubernetes-icon.svg" alt="kubernetes" width="40" height="40"/> </a> <a href="https://www.linux.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" alt="linux" width="40" height="40"/> </a> <a href="https://www.mysql.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" alt="mysql" width="40" height="40"/> </a> <a href="https://nodejs.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" alt="nodejs" width="40" height="40"/> </a> <a href="https://postman.com" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" alt="postman" width="40" height="40"/> </a> <a href="https://www.python.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="40" height="40"/> </a> <a href="https://reactjs.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" alt="react" width="40" height="40"/> </a> <a href="https://spring.io/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/springio/springio-icon.svg" alt="spring" width="40" height="40"/> </a> </p>

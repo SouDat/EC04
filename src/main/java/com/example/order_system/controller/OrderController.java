@@ -20,7 +20,7 @@ public class OrderController {
         this.customerRepository = customerRepository;
     }
 
-    @PostMapping("/addOrder")
+    @PostMapping("/addOrder/{customerId}")
     public Orders addOrders(@PathVariable Long customerId, @RequestBody Orders orders){
         Optional<Customer> customer = customerRepository.findById(customerId);
         if (customer.isPresent()) {
