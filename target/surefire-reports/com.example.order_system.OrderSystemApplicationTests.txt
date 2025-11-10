@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.example.order_system.OrderSystemApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.29 s -- in com.example.order_system.OrderSystemApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.716 s -- in com.example.order_system.OrderSystemApplicationTests

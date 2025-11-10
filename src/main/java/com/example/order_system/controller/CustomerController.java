@@ -51,6 +51,6 @@ public class CustomerController {
     @GetMapping
     public ResponseEntity<ApiResponse> getAllCustomers() {
         List<Customer> customers = customerRepository.findAll();
-        return ResponseEntity.ok(new ApiResponse("All customers fetched", customers));
+        return ResponseEntity.ok(new ApiResponse("All the customers are: ", customers));
     }
 }
