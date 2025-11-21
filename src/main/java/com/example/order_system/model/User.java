@@ -1,9 +1,12 @@
 package com.example.order_system.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 @Entity
+@Getter @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Data
 @Table(name = "users")
 public class User {
