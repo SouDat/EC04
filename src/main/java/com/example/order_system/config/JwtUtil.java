@@ -2,7 +2,7 @@ package com.example.order_system.config;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
-import lombok.Value;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.security.Key;
@@ -15,15 +15,18 @@ public class JwtUtil {
     private final Key key;
     private final long expirationMs;
 
-    public JwtUtil(String secret,
-                   long expirationMs) {
+    public JwtUtil(
+            @Value("${jwt.secret}") String secret,
+            @Value("${jwt.expiration}") long expiration
+    ) {
         this.key = Keys.hmacShaKeyFor(secret.getBytes());
-        this.expirationMs = expirationMs;
+        this.expirationMs = expiration;
     }
 
     public String generateToken(String username) {
         Date now = new Date();
         Date expiry = new Date(now.getTime() + expirationMs);
+
         return Jwts.builder()
                 .setSubject(username)
                 .setIssuedAt(now)
@@ -33,7 +36,7 @@ public class JwtUtil {
     }
 
     public boolean validateToken(String token, String username) {
-        final String tokenUsername = extractUsername(token);
+        String tokenUsername = extractUsername(token);
         return (tokenUsername.equals(username) && !isTokenExpired(token));
     }
 
@@ -51,6 +54,7 @@ public class JwtUtil {
                 .build()
                 .parseClaimsJws(token)
                 .getBody();
+
         return claimsResolver.apply(claims);
     }
 
