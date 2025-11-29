@@ -1,30 +1,25 @@
 package com.example.order_system.service;
 
-import io.jsonwebtoken.*;
-import io.jsonwebtoken.security.Keys;
+import com.example.order_system.config.JwtUtil;
+import com.example.order_system.model.User;
+import com.example.order_system.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
-import java.security.Key;
-import java.util.Date;
-
 @Service
+@RequiredArgsConstructor
 public class JwtService {
 
-    private final String SECRET = "YOUR_SECRET_KEY_SHOULD_BE_32_CHARS_LONG!";
-    private final long EXPIRATION = 1000 * 60 * 60; // 1 hour
+    private final JwtUtil jwtUtil;
+    private final UserRepository userRepo;
 
-    private Key getSigningKey() {
-        return Keys.hmacShaKeyFor(SECRET.getBytes());
+    public String createTokenForUser(User user) {
+        return jwtUtil.generateToken(user.getUsername());
     }
 
-    public String generateToken(UserDetails userDetails) {
-        return Jwts.builder()
-                .setSubject(userDetails.getUsername())   // ✅ Proper subject
-                .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION))
-                .signWith(getSigningKey(), SignatureAlgorithm.HS256)
-                .compact();
+    public boolean validateToken(String token, UserDetails userDetails) {
+        return jwtUtil.validateToken(token, userDetails.getUsername());
     }
 
 }

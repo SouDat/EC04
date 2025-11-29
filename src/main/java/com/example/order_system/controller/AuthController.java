@@ -1,61 +1,59 @@
 package com.example.order_system.controller;
 
-import com.example.order_system.config.JwtUtil;
+import com.example.order_system.dto.ApiResponse;
 import com.example.order_system.model.User;
 import com.example.order_system.repository.UserRepository;
 import com.example.order_system.request.LoginRequest;
 import com.example.order_system.request.RegisterRequest;
+import com.example.order_system.service.JwtService;
+import com.example.order_system.service.CustomUserDetailsService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
-
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api/auth")
 @RequiredArgsConstructor
 public class AuthController {
 
     private final AuthenticationManager authenticationManager;
-    private final UserRepository userRepository;
+    private final UserRepository userRepo;
     private final PasswordEncoder passwordEncoder;
-    private final JwtUtil jwtUtil;
+    private final CustomUserDetailsService userDetailsService;
+    private final JwtService jwtService;
 
     @PostMapping("/register")
-    public Map<String, String> register(@RequestBody RegisterRequest request) {
-
-        if (userRepository.existsByUsername(request.getUsername())) {
-            return Map.of("error", "Username is already taken");
+    public ResponseEntity<?> register(@RequestBody RegisterRequest req) {
+        if (userRepo.findByUsername(req.getUsername()).isPresent()) {
+            return ResponseEntity.badRequest().body(new ApiResponse("false", "Username taken"));
         }
-
         User user = new User();
-        user.setUsername(request.getUsername());
-        user.setPassword(passwordEncoder.encode(request.getPassword()));
-        user.setRole("USER");
-
-        userRepository.save(user);
-
-        return Map.of("message", "User registered successfully!");
+        user.setUsername(req.getUsername());
+        user.setPassword(passwordEncoder.encode(req.getPassword()));
+        user.setRole(req.getRole() == null ? "ROLE_USER" : req.getRole());
+        userRepo.save(user);
+        return ResponseEntity.ok(new ApiResponse("true", "Registered"));
     }
 
     @PostMapping("/login")
-    public Map<String, String> login(@RequestBody LoginRequest request) {
+    public ResponseEntity<?> login(@RequestBody LoginRequest req) {
+        try {
+            Authentication auth = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(req.getUsername(), req.getPassword()));
+        } catch (BadCredentialsException ex) {
+            return ResponseEntity.status(401).body(new ApiResponse("false", "Invalid credentials"));
+        }
 
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        request.getUsername(),
-                        request.getPassword()
-                )
-        );
+        UserDetails userDetails = userDetailsService.loadUserByUsername(req.getUsername());
+        User user = userRepo.findByUsername(req.getUsername()).get();
+        String token = jwtService.createTokenForUser(user);
 
-        String token = jwtUtil.generateToken(request.getUsername());
-
-        return Map.of(
-                "token", token,
-                "message", "Login successful"
-        );
+        return ResponseEntity.ok(java.util.Map.of("token", token));
     }
 }
