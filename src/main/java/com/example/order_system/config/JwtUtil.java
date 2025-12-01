@@ -19,7 +19,7 @@ public class JwtUtil {
             @Value("${jwt.secret}") String secret,
             @Value("${jwt.expiration}") long expiration
     ) {
-        this.key = Keys.hmacShaKeyFor(secret.getBytes());
+        this.key = Keys.hmacShaKeyFor(secret.getBytes());   //converts secret string into a secure HMAC-SHA key
         this.expirationMs = expiration;
     }
 

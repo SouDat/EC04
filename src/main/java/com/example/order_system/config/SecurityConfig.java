@@ -24,7 +24,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(csrf -> csrf.disable())
+                .csrf(csrf -> csrf.disable())     //since NOT using session based authentication, so disabled
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/**",
                                 "/login.html",
@@ -45,6 +45,7 @@ public class SecurityConfig {
         return http.build();
     }
 
+    //Connects login process to DB-loaded users, uses CustomUserDetailsService and compares passwords using BCrypt
     @Bean
     public DaoAuthenticationProvider daoAuthenticationProvider() {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
@@ -53,6 +54,7 @@ public class SecurityConfig {
         return provider;
     }
 
+    //Authenticate username password for login
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
         return config.getAuthenticationManager();

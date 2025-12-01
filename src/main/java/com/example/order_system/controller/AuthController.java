@@ -31,7 +31,7 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody RegisterRequest req) {
         if (userRepo.findByUsername(req.getUsername()).isPresent()) {
-            return ResponseEntity.badRequest().body(new ApiResponse("false", "Username taken"));
+            return ResponseEntity.badRequest().body(new ApiResponse("false", "User exists"));
         }
         User user = new User();
         user.setUsername(req.getUsername());
