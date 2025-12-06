@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Orders</title>
+</head>
+<body>
+
+<h2>Your Orders</h2>
+<button id="loadBtn">Load Orders</button>
+<ul id="ordersList"></ul>
+
+<script>
+    document.getElementById("loadBtn").addEventListener("click", async () => {
+        const token = localStorage.getItem("token");
+
+        const res = await fetch("/api/orders", {
+            headers: { "Authorization": "Bearer " + token }
+        });
+
+        if (res.status === 401) {
+            alert("Unauthorized! Please login again.");
+            window.location.href = "login.html";
+            return;
+        }
+
+        const orders = await res.json();
+        document.getElementById("ordersList").innerHTML =
+            orders.map(o => `<li>${o.itemName} — ${o.quantity}</li>`).join("");
+    });
+</script>
+
+</body>
+</html>
