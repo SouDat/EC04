@@ -29,7 +29,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/auth/**",
                                 "/login.html",
                                 "/register.html",
-                                "/index.html",
+                                "/orders.html",
                                 "/css/**",
                                 "/js/**",
                                 "/images/**").permitAll()

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+</head>
+<body>
+<h2>Register</h2>
+
+<form id="registerForm">
+    <input type="text" id="username" placeholder="Username" required><br>
+    <input type="password" id="password" placeholder="Password" required><br>
+    <button type="submit">Register</button>
+    <p style="margin-top:10px;">
+        Already have an account? <a href="/express-gateway/public/login.html">Login</a>
+    </p>
+</form>
+
+<script>
+    document.getElementById("registerForm").addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        const data = {
+            username: document.getElementById("username").value,
+            password: document.getElementById("password").value
+        };
+
+        const res = await fetch("/api/auth/register", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        });
+
+        if (res.ok) {
+            document.getElementById("msg").innerText = "Registration successful! Redirecting...";
+            setTimeout(() => window.location.href = "login.html", 1500);
+        } else {
+            document.getElementById("msg").innerText = "Registration failed!";
+        }
+    });
+
+</script>
+
+</body>
+</html>
+
